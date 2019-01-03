@@ -23,6 +23,7 @@ def main(conf=None):
     if conf is not None:
         if path.exists(conf):
             config = configparser.ConfigParser()
+            config.optionxform = str
             config.read(conf)
             # for a reason I can't explain dates are not parsed... any idea lnv42?
             window.loadDict({s: dict(config.items(s)) for s in config.sections()})
